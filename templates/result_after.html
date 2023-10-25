@@ -4,7 +4,7 @@
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <title>MuseVRium by Palette</title>
-        <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
+        <link rel="icon" type="image/x-icon" href="./static/img/palette_icon.png" />
         <!-- Font Awesome icons (free version)-->
         <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
         <!-- Google fonts-->
@@ -17,7 +17,10 @@
         <!-- Navigation-->
         <nav class="navbar navbar-expand-lg navbar-light fixed-top navbar-shrink" id="mainNav">
             <div class="container px-4 px-lg-5">
-                <a class="navbar-brand" href="/start">Palette</a>
+                <div style="display: flex; align-items: center;">
+                    <img src="./static/img/palette_icon.png" onClick="location.href='/start'" style="margin: 5px; width: 20px; cursor: pointer;">
+                    <a class="navbar-brand" href="/start">Palette</a>
+                </div>
                 <button class="navbar-toggler navbar-toggler-right" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
                     Menu
                     <i class="fas fa-bars"></i>
@@ -33,11 +36,21 @@
         <section class="projects-section">
             <div class="container px-4 px-lg-5">
                 <div class="row gx-0 mb-5 mb-lg-0 justify-content-center">
+                    <!--
                     <div class="social d-flex justify-content-center" style="margin-bottom: 3rem;">
                         <img class="img-fluid mx-2" style="width: 3rem; height: 3rem;" src="./static/main_colors/1.jpg" alt="...">
                         <img class="img-fluid mx-2" style="width: 3rem; height: 3rem;" src="./static/main_colors/2.jpg" alt="...">
                         <img class="img-fluid mx-2" style="width: 3rem; height: 3rem;" src="./static/main_colors/3.jpg" alt="...">
-                        <a class="mx-2" href="https://www.metmuseum.org/art/collection/search/437300" style="margin-top: 0.2rem;">VR<!--<i class="fa-brands fa-youtube"></i>--></a>
+                        <a class="mx-2" href="https://www.metmuseum.org/art/collection/search/437300" style="margin-top: 0.2rem;">VR</a>
+                    </div>
+                    -->
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem;">
+                        <div class="representative_colors">
+                            <img class="img-fluid r_colors" src="./static/representative_colors/A Cowherd at Valhermeil, Auvers-sur-Oise.jpg_plot.png" alt="...">
+                        </div>
+                        <div class="social d-flex" style="margin-top: 0;">
+                            <a class="mx-2" href="https://www.metmuseum.org/art/collection/search/437300" style="margin-top: 0.2rem;">VR</a>
+                        </div>
                     </div>
                     <div class="col-lg-6">
                         <img class="img-fluid" src="./static/paintings/A Cowherd at Valhermeil, Auvers-sur-Oise.jpg" alt="...">
@@ -51,14 +64,6 @@
                                     <p class="mb-0 text-black-50">
                                         This view shows one of the roads connecting the hamlet of Valhermeil in Auvers with Pontoise, the village northwest of Paris where Pissarro lived for many years. Between 1873 and 1882, he painted some twenty works in this area, several featuring the same red-roofed house. The subject, villagers walking on paths through the French countryside, was one of the artist’s favorites, reflecting his interest in the pulse of daily rural life. Made in 1874, the year of the first Impressionist exhibition, this picture demonstrates Pissarro’s adaptation of the looser touch, broken brushstrokes, and lighter palette of younger colleagues like Monet.
                                     </p>
-                                    <!--
-                                    <div class="social d-flex">
-                                        <a href="https://www.metmuseum.org/art/collection/search/437300" style="margin-right: 0.5rem; margin-top: 0.2rem;"><i class="fa-brands fa-youtube"></i></a>
-                                        <img class="img-fluid mx-2" style="width: 3rem; height: 3rem;" src="assets/main colors/1.jpg" alt="...">
-                                        <img class="img-fluid mx-2" style="width: 3rem; height: 3rem;" src="assets/main colors/2.jpg" alt="...">
-                                        <img class="img-fluid mx-2" style="width: 3rem; height: 3rem;" src="assets/main colors/3.jpg" alt="...">
-                                    </div>
-                                    -->
                                 </div>
                             </div>
                         </div>
