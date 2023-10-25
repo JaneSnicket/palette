@@ -41,8 +41,7 @@ def compare_paintings_with_user_choice(paintings_colors, user_liked_colors, user
 def index():
     preferred_colors = os.listdir('static/main_colors')
     disliked_colors = os.listdir('static/least_used_colors')
-    return render_template('index.html', preferred_colors=preferred_colors, disliked_colors=disliked_colors)
-
+    return render_template('index_before.html', preferred_colors=preferred_colors, disliked_colors=disliked_colors)
 
 @app.route('/recommend_painting', methods=['POST'])
 def recommend():
@@ -57,11 +56,23 @@ def recommend():
     return redirect(url_for('result', painting=recommended_painting))
 
 
-@app.route('/result')
-def result():
+@app.route('/result_before')
+def result_before():
     painting = request.args.get('painting')
-    return render_template('result.html', painting=painting)
+    return render_template('result_before.html', painting=painting)
 
+# 여기부터
+@app.route('/start')
+def start():
+    return render_template('start.html')
+
+@app.route('/select')
+def select():
+    return render_template('main.html')
+
+@app.route('/result', methods=['POST'])
+def result():
+    return render_template('result_after.html')
 
 if __name__ == '__main__':
     app.run(debug=True)
