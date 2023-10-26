@@ -2,11 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-<<<<<<< HEAD
-      <module fileurl="file://$PROJECT_DIR$/.idea/MuseVRium_Palette.iml" filepath="$PROJECT_DIR$/.idea/MuseVRium_Palette.iml" />
-=======
       <module fileurl="file://$PROJECT_DIR$/.idea/palette.iml" filepath="$PROJECT_DIR$/.idea/palette.iml" />
->>>>>>> e5967f7ff486375aecbedf65d54aad22a7eadff8
     </modules>
   </component>
 </project>
