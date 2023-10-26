@@ -28,7 +28,7 @@ def compare_paintings_with_user_choice(paintings_colors, user_liked_colors, user
         score = 0
         for user_color in user_liked_colors:
             score += sum([1 / (calculate_rgb_distance(user_color, painting_color) + 1) for painting_color in colors['liked_colors']])
-        disliked_distance = calculate_rgb_distance(user_disliked_color, colors['disliked_color'])
+        disliked_distance = calculate_rgb_distance(user_disliked_color, colors.get('disliked_color', [0, 0, 0]))
         score -= disliked_distance
         if score > best_score:
             best_score = score
@@ -72,7 +72,24 @@ def select():
 
 @app.route('/result', methods=['POST'])
 def result():
-    return render_template('result_after.html')
+    liked_colors = request.form.get('liked_colors')
+    disliked_color = request.form.get('disliked_color')
+
+    liked_rgb_values = [image_colors[color] for color in liked_colors.split(",")]
+    disliked_rgb_value = least_used_colors[disliked_color]
+
+    recommended_painting = compare_paintings_with_user_choice(paintings_colors, liked_rgb_values, disliked_rgb_value)
+
+    # 명화 데이터 추출 from colors_data.json
+    painting_info = paintings_colors[recommended_painting]
+    title = painting_info["title"]
+    artist = painting_info["artist"]
+    description = painting_info["description"]
+    vr_link = painting_info["vr_link"]
+    original_image = painting_info["original_image"]
+    color_image = painting_info["color_image"]
+
+    return render_template('result_after.html', title=title, artist=artist, description=description, vr_link=vr_link, original_image=original_image, color_image=color_image)
 
 if __name__ == '__main__':
     app.run(debug=True)

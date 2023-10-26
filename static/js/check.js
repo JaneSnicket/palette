@@ -24,13 +24,16 @@ function checkColors() {
 
         for(i=0; i < selectColors.disliked.length; i++){
             if(selectColors.disliked[i].checked) {
-                colorsArray[arrayCount] = selectColors.disliked[i].value;
-                arrayCount ++;
+                //colorsArray[arrayCount] = selectColors.disliked[i].value;
+                //arrayCount ++;
+                //alert(selectColors.disliked[i].value);
+                document.getElementById("disliked_color").value = selectColors.disliked[i].value;
             }
         }
 
         var colorsJson = JSON.stringify(colorsArray);
-        alert(colorsJson);
+        document.getElementById("liked_colors").value = colorsArray;
+        //alert(colorsArray);
 
         return true;
     }
