@@ -38,37 +38,14 @@ def compare_paintings_with_user_choice(paintings_colors, user_liked_colors, user
 
 
 @app.route('/')
-def index():
-    preferred_colors = os.listdir('static/main_colors')
-    disliked_colors = os.listdir('static/least_used_colors')
-    return render_template('index_before.html', preferred_colors=preferred_colors, disliked_colors=disliked_colors)
-
-@app.route('/recommend_painting', methods=['POST'])
-def recommend():
-    liked_colors = request.form.getlist('liked_colors')
-    disliked_color = request.form.get('disliked_color')
-
-    liked_rgb_values = [image_colors[color] for color in liked_colors]
-    disliked_rgb_value = least_used_colors[disliked_color]
-
-    recommended_painting = compare_paintings_with_user_choice(paintings_colors, liked_rgb_values, disliked_rgb_value)
-
-    return redirect(url_for('result', painting=recommended_painting))
-
-
-@app.route('/result_before')
-def result_before():
-    painting = request.args.get('painting')
-    return render_template('result_before.html', painting=painting)
-
-# 여기부터
-@app.route('/start')
 def start():
     return render_template('start.html')
+
 
 @app.route('/select')
 def select():
     return render_template('main.html')
+
 
 @app.route('/result', methods=['POST'])
 def result():
@@ -89,7 +66,7 @@ def result():
     original_image = painting_info["original_image"]
     color_image = painting_info["color_image"]
 
-    return render_template('result_after.html', title=title, artist=artist, description=description, vr_link=vr_link, original_image=original_image, color_image=color_image)
+    return render_template('result.html', title=title, artist=artist, description=description, vr_link=vr_link, original_image=original_image, color_image=color_image)
 
 if __name__ == '__main__':
     app.run(debug=True)
