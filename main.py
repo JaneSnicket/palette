@@ -21,20 +21,21 @@ def calculate_rgb_distance(color1, color2):
     return distance.euclidean(color1, color2)
 
 def compare_paintings_with_user_choice(paintings_colors, user_liked_colors, user_disliked_color):
-    best_score = float('-inf')
+    best_score = float('inf')  # 최소 점수를 찾기 위해 초기값을 무한대로 설정
     best_painting = None
 
     for painting, colors in paintings_colors.items():
         score = 0
         for user_color in user_liked_colors:
-            score += sum([1 / (calculate_rgb_distance(user_color, painting_color) + 1) for painting_color in colors['liked_colors']])
+            score += sum([calculate_rgb_distance(user_color, painting_color) for painting_color in colors['liked_colors']])
         disliked_distance = calculate_rgb_distance(user_disliked_color, colors.get('disliked_color', [0, 0, 0]))
-        score -= disliked_distance
-        if score > best_score:
+        score += disliked_distance  # 싫어하는 색상과의 거리를 더해서 점수를 감소시킴
+        if score < best_score:  # 최소 점수를 찾기 위한 비교
             best_score = score
             best_painting = painting
 
     return best_painting
+
 
 
 @app.route('/')
